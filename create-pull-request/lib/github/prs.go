@@ -85,10 +85,10 @@ func GetAllPrs(ownerUsername string, repoName string) PullRequests {
 
 	if bodyString == "[]" {
 		fmt.Printf("No pull requests on %s/%s.", ownerUsername, repoName)
-		return
+		return nil
 	}
-	var prs PullRequests
 
+	var prs PullRequests
 	err = json.Unmarshal(body, &prs)
 	if err != nil {
 		log.Fatalln(err)
