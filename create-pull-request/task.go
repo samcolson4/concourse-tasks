@@ -2,6 +2,7 @@ package main
 
 import (
 	getPullRequests "github.com/samcolson4/concourse-tasks/create-pull-request/lib/github"
+	branches "github.com/samcolson4/concourse-tasks/create-pull-request/lib/branches"
 	"fmt"
 )
 
@@ -22,4 +23,7 @@ func main() {
 			break
 		}
 	}
+
+	branchName := fmt.Sprintf("bump-%s-to-%s", dependency, newVersion)
+	branches.NewBranch(branchName)
 }
